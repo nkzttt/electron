@@ -2,6 +2,7 @@ const
 	electron = require('electron'),
 	{app} = electron,	// アプリケーションを操作するモジュール
 	{BrowserWindow} = electron,	// ネイティブブラウザウィンドウを作成するモジュール
+	client = require('electron-connect').client,
 	path = require('path'),
 	url = require('url');
 
@@ -32,7 +33,7 @@ let createWindow = function () {
 	win = new BrowserWindow({width: 800, height: 600});
 
 	win.loadURL(url.format({
-		pathname: '/index.html',
+		pathname: path.join(__dirname, '/index.html'),
 		protocol: 'file:',
 		slashes: true
 	}));
@@ -46,8 +47,13 @@ let createWindow = function () {
 };
 
 app.on('ready', () => {
-	useRootPaht();
+	
+	// クライアントからrequireを使うため、相対とする
+	// useRootPaht();
 	createWindow();
+	
+	// サーバープロセスへ接続
+	client.create(win);
 });
 
 app.on('window-all-closed', () => {
@@ -60,6 +66,6 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
 	// macOS では、ドックをクリックされた時にウィンドウがなければ新しく作成する
 	if (win === null) {
-		createWindow()
+		createWindow();
 	}
 });

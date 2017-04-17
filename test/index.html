@@ -7,13 +7,16 @@
 </head>
 <body>
 
+<!-- gulp側で立てたserverへ接続する -->
+<script>require('electron-connect').client.create();</script>
+
 <todo></todo>
 <account></account>
 
-<script src="/js/riot_compiler.min.js"></script>
+<script src="./js/riot_compiler.min.js"></script>
 
-<script type="riot/tag" src="/js/tags/todo.js"></script>
-<script type="riot/tag" src="/js/tags/account.js"></script>
+<script type="riot/tag" src="./js/tags/todo.js"></script>
+<script type="riot/tag" src="./js/tags/account.js"></script>
 
 <script>
 	riot.mount('todo', {

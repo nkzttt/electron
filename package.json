@@ -11,9 +11,13 @@
     "electron-packager": "^8.6.0"
   },
   "scripts": {
-    "test": "electron ./test",
+    "start": "electron ./test",
     "pack": "electron-packager ./test test --platform=darwin,win32 --arch=x64"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "electron-connect": "^0.6.1",
+    "gulp": "^3.9.1"
+  }
 }

@@ -4,10 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "npm run riot & npm run server",
-    "riot": "node_modules/.bin/riot tags js/tags --type es6 --style stylus -w",
-    "server": "node_modules/.bin/browser-sync start --server --files 'js/**/*.*'",
-    "riot-help": "node_modules/.bin/riot -h"
+    "start": "npm run riot",
+    "riot": "node_modules/.bin/riot tags js/tags --type es6 --style stylus -w"
   },
   "dependencies": {
     "babel": "^6.23.0",
@@ -17,8 +15,5 @@
     "stylus": "^0.54.5"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.18.8"
-  }
+  "license": "ISC"
 }
