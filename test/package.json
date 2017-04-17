@@ -1,0 +1,24 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "npm run riot & npm run server",
+    "riot": "node_modules/.bin/riot tags js/tags --type es6 --style stylus -w",
+    "server": "node_modules/.bin/browser-sync start --server --files 'js/**/*.*'",
+    "riot-help": "node_modules/.bin/riot -h"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "riot": "^3.4.1",
+    "stylus": "^0.54.5"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  }
+}

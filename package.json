@@ -1,0 +1,19 @@
+{
+  "name": "builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "electron": "^1.6.2",
+    "electron-packager": "^8.6.0"
+  },
+  "scripts": {
+    "test": "electron ./test",
+    "pack": "electron-packager ./test test --platform=darwin,win32 --arch=x64"
+  },
+  "author": "",
+  "license": "ISC"
+}
