@@ -11,8 +11,8 @@
     "electron-packager": "^8.6.0"
   },
   "scripts": {
-    "start": "electron ./test",
-    "pack": "electron-packager ./test test --platform=darwin,win32 --arch=x64"
+    "start": "electron ./sample",
+    "pack": "electron-packager ./sample sample --platform=darwin,win32 --arch=x64"
   },
   "author": "",
   "license": "ISC",

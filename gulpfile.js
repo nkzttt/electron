@@ -1,5 +1,5 @@
 const
-	appDir = __dirname + '/test',
+	appDir = __dirname + '/sample',
 	gulp = require('gulp'),
 	electron = require('electron-connect').server.create({path: appDir}),
 	exec = require('child_process').exec;
