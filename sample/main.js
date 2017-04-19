@@ -1,10 +1,13 @@
 const 
 	electron = require('electron'),
-	{app} = electron,	// アプリケーションを操作するモジュール
-	{BrowserWindow} = electron,	// ネイティブブラウザウィンドウを作成するモジュール
+	{app} = electron,
+	{BrowserWindow} = electron,
 	client = require('electron-connect').client,
 	path = require('path'),
 	url = require('url');
+
+// setup api
+require('./api.js');
 
 // ウィンドウオブジェクトをグローバル参照しておく
 // しないと、ガベージコレクタにより自動的に閉じられてしまう

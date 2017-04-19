@@ -89,8 +89,14 @@
 		<li each="{v in items}">{v}</li>
 	</ul>
 	<p if="{!items.length}">!!!コンプリート!!!</p>
+	<h2>プロセス間通信テスト</h2>
+	<p>
+		<a href="#" onclick="{api}">クリックしてください。</a>
+	</p>
 
 	<script type="es6">
+		const ipcRenderer = require('electron').ipcRenderer;
+		
 		let self = this;
 		
 		self.items = [
@@ -99,14 +105,24 @@
 			'piyo'
 		];
 		
-		self.checkVal = function (e) {
+		self.checkVal = function(e) {
 			let value = e.target.value,
 				index = self.items.indexOf(value);
 			if (index === -1) return;
 			
 			e.target.value = '';
 			self.items.splice(index, 1);
-		}
+		};
+		
+		self.api = function(e) {
+			e.preventDefault();
+			
+			ipcRenderer.send('test', 'テストメッセージ');
+		};
+		
+		ipcRenderer.on('test-response', (event, message) => {
+			alert(message);
+		});
 	</script>
 
 	<style type="stylus">

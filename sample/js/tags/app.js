@@ -38,8 +38,10 @@ riot.tag2('root', '<p>これはサンプルプロジェクトです。</p>', '',
 
 
 
-riot.tag2('test', '<h2>DOM操作テスト</h2> <p>テキストエリアにリスト項目を入力してください。</p> <div><input type="text" onkeyup="{checkVal}" disabled="{!items.length}"></div> <ul> <li each="{v in items}">{v}</li> </ul> <p if="{!items.length}">!!!コンプリート!!!</p>', 'test ul,[data-is="test"] ul{ padding: 0; margin: 1em 0 0; list-style: none; } test ul > li,[data-is="test"] ul > li{ display: inline-block; padding: 0 10px; }', '', function(opts) {
+riot.tag2('test', '<h2>DOM操作テスト</h2> <p>テキストエリアにリスト項目を入力してください。</p> <div><input type="text" onkeyup="{checkVal}" disabled="{!items.length}"></div> <ul> <li each="{v in items}">{v}</li> </ul> <p if="{!items.length}">!!!コンプリート!!!</p> <h2>プロセス間通信テスト</h2> <p> <a href="#" onclick="{api}">クリックしてください。</a> </p>', 'test ul,[data-is="test"] ul{ padding: 0; margin: 1em 0 0; list-style: none; } test ul > li,[data-is="test"] ul > li{ display: inline-block; padding: 0 10px; }', '', function(opts) {
 'use strict';
+
+var ipcRenderer = require('electron').ipcRenderer;
 
 var self = this;
 
@@ -53,6 +55,16 @@ self.checkVal = function (e) {
 	e.target.value = '';
 	self.items.splice(index, 1);
 };
+
+self.api = function (e) {
+	e.preventDefault();
+
+	ipcRenderer.send('test', 'テストメッセージ');
+};
+
+ipcRenderer.on('test-response', function (event, message) {
+	alert(message);
+});
 });
 
 

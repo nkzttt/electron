@@ -10,7 +10,7 @@ gulp.task('serve', () => {
 	electron.start();
 
 	// Restart browser process 
-	gulp.watch(appDir + '/main.js', electron.restart);
+	gulp.watch([appDir + '/main.js', appDir + '/api.js'], electron.restart);
 
 	// Reload renderer process 
 	gulp.watch([appDir + '/*.html', appDir + '/js/**/*.js'], electron.reload);

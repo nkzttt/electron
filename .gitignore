@@ -2,3 +2,4 @@
 .idea
 .node-version
 node_modules
+electron-api-demos
